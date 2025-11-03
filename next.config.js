@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  trailingSlash: true
+  output: 'export',  // Критично для Netlify!
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  }
 }
 
-export default nextConfig
+module.exports = nextConfig
