@@ -73,5 +73,5 @@ function handler(req: Request): Response {
   });
 }
 
-console.log("Server running at http://localhost:8000");
-serve(handler, { port: 8000 });
+console.log("Server running!");
+serve(handler);
