@@ -1,85 +1,53 @@
-'use client';
-import { useState } from 'react';
-
 export default function Home() {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
-
-  const sendMessage = () => {
-    if (input.trim()) {
-      setMessages([...messages, {
-        id: Date.now(),
-        text: input,
-        time: new Date().toLocaleTimeString()
-      }]);
-      setInput('');
-    }
-  };
-
   return (
     <div style={{
-      height: '100vh',
+      minHeight: '100vh',
       background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      textAlign: 'center',
+      padding: '2rem'
     }}>
-      <header style={{
-        background: 'rgba(255,255,255,0.1)',
-        padding: '1rem',
-        textAlign: 'center',
-        color: 'white',
-        backdropFilter: 'blur(10px)'
-      }}>
-        <h1>Telegram Clone 🔒</h1>
-        <p>Secure Messaging</p>
-      </header>
-
-      <div style={{ flex: 1, padding: '1rem', overflowY: 'auto' }}>
-        {messages.map(msg => (
-          <div key={msg.id} style={{
-            background: 'rgba(255,255,255,0.9)',
-            marginBottom: '0.5rem',
-            padding: '0.75rem',
-            borderRadius: '1rem',
-            maxWidth: '70%'
-          }}>
-            <div>{msg.text}</div>
-            <div style={{ fontSize: '0.75rem', color: '#666', textAlign: 'right' }}>
-              {msg.time}
-            </div>
-          </div>
-        ))}
-      </div>
-
+      <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>
+        Telegram Clone 🚀
+      </h1>
+      <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
+        Secure messaging application
+      </p>
       <div style={{
-        display: 'flex',
-        padding: '1rem',
-        gap: '0.5rem',
-        background: 'rgba(255,255,255,0.1)',
-        backdropFilter: 'blur(10px)'
+        background: 'rgba(255,255,255,0.9)',
+        padding: '2rem',
+        borderRadius: '1rem',
+        color: 'black',
+        maxWidth: '500px',
+        width: '100%'
       }}>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-          placeholder="Type a message..."
+        <h2>Messenger Interface</h2>
+        <p>Enter your message:</p>
+        <input 
+          type="text" 
+          placeholder="Type here..."
           style={{
-            flex: 1,
+            width: '100%',
             padding: '0.75rem',
-            border: 'none',
-            borderRadius: '2rem',
-            outline: 'none'
+            marginBottom: '1rem',
+            border: '1px solid #ccc',
+            borderRadius: '0.5rem'
           }}
         />
-        <button onClick={sendMessage} style={{
-          padding: '0.75rem 1.5rem',
+        <button style={{
+          width: '100%',
+          padding: '0.75rem',
           background: '#4CAF50',
           color: 'white',
           border: 'none',
-          borderRadius: '2rem',
+          borderRadius: '0.5rem',
           cursor: 'pointer'
         }}>
-          Send
+          Send Message
         </button>
       </div>
     </div>
