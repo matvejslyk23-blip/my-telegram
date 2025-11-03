@@ -1,5 +1,7 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 
+const port = parseInt(Deno.env.get("PORT") || "8000");
+
 function handler(req: Request): Response {
   const html = `
 <!DOCTYPE html>
@@ -73,5 +75,5 @@ function handler(req: Request): Response {
   });
 }
 
-console.log("Server running!");
-serve(handler);
+console.log(`Server running on port ${port}!`);
+serve(handler, { port });
