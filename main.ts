@@ -1,21 +1,18 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 
-// Deno Deploy автоматически определяет порт
-function handler(req: Request): Response {
-  const html = `
-<!DOCTYPE html>
+serve((_req) => {
+  return new Response(
+    `<!DOCTYPE html>
 <html>
 <head>
     <title>Telegram Clone</title>
     <style>
         body { 
-            font-family: Arial, sans-serif; 
+            font-family: Arial; 
             margin: 0; 
-            padding: 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: white;
@@ -26,7 +23,6 @@ function handler(req: Request): Response {
             border-radius: 1rem;
             color: black;
             max-width: 500px;
-            width: 90%;
         }
         input, button {
             width: 100%;
@@ -46,34 +42,12 @@ function handler(req: Request): Response {
 <body>
     <div class="container">
         <h1>Telegram Clone 🚀</h1>
-        <p>Secure messaging on Deno Deploy</p>
-        
-        <div id="messages"></div>
-        
-        <input type="text" id="messageInput" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send Message</button>
+        <p>Messenger is working!</p>
+        <input type="text" placeholder="Type message...">
+        <button>Send</button>
     </div>
-
-    <script>
-        function sendMessage() {
-            const input = document.getElementById('messageInput');
-            const message = input.value.trim();
-            if (message) {
-                const messagesDiv = document.getElementById('messages');
-                messagesDiv.innerHTML += '<p><strong>You:</strong> ' + message + '</p>';
-                input.value = '';
-            }
-        }
-    </script>
 </body>
-</html>
-  `;
-
-  return new Response(html, {
-    headers: { "content-type": "text/html; charset=utf-8" },
-  });
-}
-
-// Deno Deploy сам управляет портом
-console.log("Server starting on Deno Deploy...");
-serve(handler);
+</html>`,
+    { headers: { "content-type": "text/html" } }
+  );
+});

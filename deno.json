@@ -1,7 +1,4 @@
 {
-  "deploy": {
-    "entrypoint": "main.ts"
-  },
   "tasks": {
     "start": "deno run --allow-net main.ts"
   },
